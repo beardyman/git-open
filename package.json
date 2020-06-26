@@ -1,0 +1,19 @@
+{
+  "name": "git-open",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "git-open": "./bin/git-open"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "open": "^7.0.4",
+    "simple-git": "^2.11.0"
+  }
+}
