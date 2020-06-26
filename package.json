@@ -6,6 +6,9 @@
   "bin": {
     "git-open": "./bin/git-open"
   },
+  "man": [
+    "./man/git-open.1"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
