@@ -2,6 +2,8 @@
 
 Super simple git extension for opening the remote UI of your git repository.
 
+If 
+
 ## Installation
 ```shell script
 npm i git-open
