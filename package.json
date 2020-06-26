@@ -1,5 +1,5 @@
 {
-  "name": "git-open",
+  "name": "@beardyman/git-open",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
