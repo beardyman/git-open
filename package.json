@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "git-open": "./bin/git-open"
+    "git-open": "./bin/git-open.js"
   },
   "man": [
     "./man/git-open.1"
