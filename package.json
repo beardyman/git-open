@@ -12,11 +12,17 @@
   "scripts": {
     "test": "nyc -r=lcov -r=text-summary --report-dir=test/reports/unit mocha --recursive test/unit/*.spec.js"
   },
-  "keywords": [],
+  "keywords": [
+    "git"
+  ],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "git": "https://github.com/beardyman/git-open"
+  },
   "dependencies": {
     "lodash": "^4.17.15",
+    "minimist": "^1.2.5",
     "open": "^7.0.4",
     "simple-git": "^2.11.0"
   },

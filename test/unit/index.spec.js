@@ -5,17 +5,19 @@ const sinon = require('sinon');
 
 
 describe('Git Open', ()=>{
-  let main, getRemotes, open;
+  let main, git, open;
 
   beforeEach(()=>{
     open = sinon.stub();
-    getRemotes = sinon.stub().resolves();
     sinon.stub(console, 'log');
 
-    const simpleGit = ()=>({getRemotes});
+    git = {
+      getRemotes: sinon.stub().resolves(),
+      branch: sinon.stub().resolves()
+    }
 
     main = proxyquire('../../index', {
-      'simple-git/promise': simpleGit,
+      'simple-git/promise': ()=>git,
       open
     })
   });
@@ -25,23 +27,39 @@ describe('Git Open', ()=>{
   });
 
   it('should fail gracefully and notify the user', () => {
-    getRemotes.resolves();
-    return main().then(()=>{
+    git.getRemotes.resolves();
+    return main({}).then(()=>{
       expect(console.log.args[0][0]).to.equal('Could not determine remote UI URL');
     });
   });
 
   it('should open the URL if its found', () => {
-    getRemotes.resolves([{name:'origin', refs:{fetch:'Sweet URL'}}]);
-    return main().then(()=>{
+    git.getRemotes.resolves([{name:'origin', refs:{fetch:'Sweet URL'}}]);
+    return main({}).then(()=>{
       expect(console.log.args[0][0]).to.equal('Opening Sweet URL...');
     });
   });
 
   it('should handle ssh cloned urls', () => {
-    getRemotes.resolves([{name:'origin', refs:{fetch:'git@SweetURL.com:withUser'}}]);
-    return main().then(()=>{
+    git.getRemotes.resolves([{name:'origin', refs:{fetch:'git@SweetURL.com:withUser'}}]);
+    return main({}).then(()=>{
       expect(console.log.args[0][0]).to.equal('Opening https://SweetURL.com/withUser...');
+    });
+  });
+
+  it('should handle the branch flag parameter', () => {
+    git.getRemotes.resolves([{name:'origin', refs:{fetch:'Sweet URL'}}]);
+    git.branch.resolves({current:'branchy'})
+    return main({b:true}).then(()=>{
+      expect(console.log.args[0][0]).to.equal('Opening Sweet URL/tree/branchy...');
+    });
+  });
+
+  it('should handle the branch flag parameter on an ssh clone', () => {
+    git.getRemotes.resolves([{name:'origin', refs:{fetch:'git@SweetURL.com:withUser'}}]);
+    git.branch.resolves({current:'branchy'})
+    return main({b:true}).then(()=>{
+      expect(console.log.args[0][0]).to.equal('Opening https://SweetURL.com/withUser/tree/branchy...');
     });
   });
 
