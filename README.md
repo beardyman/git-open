@@ -1,6 +1,6 @@
 # git-open
 
-Opens the remote UI of your git repository
+Git extension for opening the remote UI of your git repository.
 
 ## Installation
 ```shell script
