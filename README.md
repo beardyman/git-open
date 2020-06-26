@@ -2,7 +2,7 @@
 
 Super simple git extension for opening the remote UI of your git repository.
 
-If 
+If `git open` doesn't work for your hosted git repository, please submit a github issue.
 
 ## Installation
 ```shell script
