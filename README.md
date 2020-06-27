@@ -1,4 +1,5 @@
 # git-open
+![Travis Build Status](https://travis-ci.org/beardyman/git-open.svg?branch=master)
 
 Super simple git extension for opening the remote UI of your git repository.
 
