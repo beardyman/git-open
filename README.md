@@ -7,12 +7,13 @@ If `git open` doesn't work for your hosted git repository, please submit a githu
 
 ## Installation
 ```shell script
-npm i git-open
+npm i -g @beardyman/git-open
 ```
 
 ## Usage
 Open the repository UI
 ```shell script
+cd my-git-repo
 git open
 ```
 
